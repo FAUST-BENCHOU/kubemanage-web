@@ -170,6 +170,22 @@ const routes = [
                 component: () => import("@/views/persistentvolume/PersistentVolume.vue")
             }
         ]
+    },
+    {
+        path: "/authority",
+        name: "权限管理",
+        component: Layout,
+        icon: "Lock",
+        meta: {title: "权限管理", requireAuth: true},
+        children: [
+            {
+                path: "/authority",
+                name: "权限管理",
+                icon: "Lock",
+                meta: {title: "权限管理", requireAuth: true},
+                component: () => import("@/views/authority/Authority.vue")
+            }
+        ]
     }
 ]
 

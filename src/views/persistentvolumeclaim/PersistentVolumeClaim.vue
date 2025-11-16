@@ -136,8 +136,7 @@ import common from "../common/Config";
 import yaml2obj from 'js-yaml';
 import json2yaml from 'json2yaml';
 import {getNamespecelist} from "@/api/namespace";
-import {GetPersistentVolumeClaim, GetPersistentVolumeClaimDetail, UpdatePersistentVolumeClaim} from "@/api/pvc";
-import {DeleteSecret} from "@/api/secret";
+import {GetPersistentVolumeClaim, GetPersistentVolumeClaimDetail, UpdatePersistentVolumeClaim, DeletePersistentVolumeClaim} from "@/api/pvc";
 export default {
     data() {
         return {
@@ -183,8 +182,8 @@ export default {
             //删除
             delPvcData: {
                 params: {
-                    pvc_name: '',
-                    namespace: '',
+                    name: '',
+                    namespace: ''
                 }
             }
         }
@@ -292,9 +291,9 @@ export default {
             this.yamlDialog = false
         },
         delPvc(e) {
-            this.delPvcData.params.pvc_name = e.row.metadata.name
+            this.delPvcData.params.name = e.row.metadata.name
             this.delPvcData.params.namespace = this.namespaceValue
-          DeleteSecret(this.delPvcData.params)
+          DeletePersistentVolumeClaim(this.delPvcData.params)
             .then(res => {
                 this.getPvcs()
                 this.$message.success({

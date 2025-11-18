@@ -142,6 +142,36 @@ const routes = [
         ]
     },
     {
+        path: "/llm",
+        name: "k8s-LLM管理",
+        component: Layout,
+        icon: "ChatRound",
+        meta: {title: "k8s-LLM管理", requireAuth: true},
+        children: [
+            {
+                path: "/llm/ollama",
+                name: "Ollama管理",
+                icon: "ChatDotRound",
+                meta: {title: "Ollama管理", requireAuth: true},
+                component: () => import("@/views/llm/Ollama.vue")
+            },
+            {
+                path: "/llm/knowledge",
+                name: "知识库管理",
+                icon: "Collection",
+                meta: {title: "知识库管理", requireAuth: true},
+                component: () => import("@/views/llm/Knowledge.vue")
+            },
+            {
+                path: "/llm/ai",
+                name: "AI管理",
+                icon: "Cpu",
+                meta: {title: "AI管理", requireAuth: true},
+                component: () => import("@/views/llm/Ai.vue")
+            }
+        ]
+    },
+    {
         path: "/cluster",
         name: "集群",
         component: Layout,
